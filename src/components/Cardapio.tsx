@@ -11,25 +11,19 @@ interface CardapioProps {
 }
 
 const Cardapio = ({ props }: CardapioProps) => {
+  
   return (
-    <View
-      className="w-full flex flex-row gap-4 p-4 border border-gray-200 rounded-lg"
-    >
+    <View className="w-full flex flex-row gap-4 p-4 border border-gray-200 rounded-lg">
       {/* Imagem */}
-      <Image
-        source={{ uri: props.imagem }}
-        className="w-24 h-24 rounded-lg"
-      />
+      <Image source={{ uri: props.imagem }} className="w-24 h-24 rounded-lg" />
       <View className="w-full flex flex-col gap-4">
         {/* Nome */}
         <Text className="text-2xl font-bold">{props.nome}</Text>
         {/* Descrição */}
-        <Text className="text-gray-400" >
-          {props.descricao}
-        </Text>
+        <Text className="text-gray-400">{props.descricao}</Text>
         {/* Valor */}
-        <Text className="" style={{ fontWeight: 600 }}>
-          R$ {props.valor}
+        <Text className="font-semibold tracking-wide">
+          R$ {props.valor.toFixed(2).replace(".", ",")}
         </Text>
       </View>
     </View>
