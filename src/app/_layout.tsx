@@ -54,7 +54,7 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }} className="bg-background">
-      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME} >
         <StatusBar style={isDarkColorScheme ? "dark" : "light"} />
         <Navigation />
         <Stack screenOptions={{ headerShown: false }} />

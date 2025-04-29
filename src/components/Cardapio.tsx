@@ -18,9 +18,9 @@ const Cardapio = ({ props }: CardapioProps) => {
       <Image source={{ uri: props.imagem }} className="w-24 h-24 rounded-lg" />
       <View className="w-full flex flex-col gap-4">
         {/* Nome */}
-        <Text className="text-2xl font-bold">{props.nome}</Text>
+        <Text className="text-2xl font-bold text-text">{props.nome}</Text>
         {/* Descrição */}
-        <Text className="text-gray-400">{props.descricao}</Text>
+        <Text className="text-text/75">{props.descricao}</Text>
         {/* Valor */}
         <Text className="font-semibold tracking-wide">
           R$ {props.valor.toFixed(2).replace(".", ",")}

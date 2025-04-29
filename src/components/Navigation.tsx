@@ -9,7 +9,7 @@ const Navigation = () => {
   const { isDarkColorScheme, toggleColorScheme } = useColorScheme();
 
   return (
-    <View className="flex flex-row justify-between items-center px-4 bg-gray-100 dark:bg-black pt-20 pb-4">
+    <View className="flex flex-row justify-between items-center px-4 bg-background pt-20 pb-4">
       <TouchableOpacity onPress={() => alert("Menu button pressed")}>
         <Menu size={24} color={isDarkColorScheme ? "white" : "black"} />
       </TouchableOpacity>

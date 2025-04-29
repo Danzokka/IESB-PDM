@@ -3,6 +3,7 @@ const { hairlineWidth } = require('nativewind/theme');
 
 module.exports = {
   // NOTE: Update this to include the paths to all of your component files.
+  darkMode: 'class',
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
@@ -11,7 +12,7 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'var(--background)',
+        background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -20,6 +21,14 @@ module.exports = {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+        },
+        tertiary: {
+          DEFAULT: 'hsl(var(--tertiary))',
+          foreground: 'hsl(var(--tertiary-foreground))',
+        },
+        text: {
+          DEFAULT: 'hsl(var(--text))',
+          foreground: 'hsl(var(--text-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -62,4 +71,4 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-}
+};

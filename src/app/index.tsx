@@ -4,6 +4,7 @@ import { Text, View, ScrollView, FlatList } from "react-native";
 import Categoria from "../components/Categoria";
 import { getCardapio } from "../actions/cardapio";
 import React from "react";
+import { Button } from "../components/ui/button";
 
 export default function Index() {
   const items = getCardapio();
@@ -20,25 +21,25 @@ export default function Index() {
       : items.filter((item) => item.categoria === selectedCategory);
 
   return (
-    <View className="w-full h-screen flex flex-col justify-center items-center gap-8 py-12 px-4">
-      <Text className="text-3xl font-bold w-full text-left">Cardápio</Text>
+    <View className="w-full h-screen flex flex-col justify-center items-center gap-8 py-12 px-4 bg-background">
+      <Text className="text-3xl font-bold w-full text-left text-text">
+        Cardápio
+      </Text>
       <ScrollView
         horizontal
         className="w-full"
         contentContainerClassName="gap-4 flex-row h-8 mb-4"
       >
         {categories.map((category) => (
-          <Text
-            key={category}
-            className={`px-4 py-2 rounded-full ${
-              selectedCategory === category
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-black"
-            }`}
+          <Button
             onPress={() => setSelectedCategory(category)}
+            key={category}
+            className="px-4 py-2"
+            size={"sm"}
+            variant={selectedCategory === category ? "secondary" : "outline"}
           >
-            {category}
-          </Text>
+            <Text className="text-sm text-text font-semibold">{category}</Text>
+          </Button>
         ))}
       </ScrollView>
       <FlatList
@@ -47,7 +48,11 @@ export default function Index() {
         contentContainerStyle={{ gap: 12 }}
         data={filteredItems}
         renderItem={({ item }) => (
-          <Categoria category={item.categoria} items={item.items} key={item.categoria} />
+          <Categoria
+            category={item.categoria}
+            items={item.items}
+            key={item.categoria}
+          />
         )}
         keyExtractor={(item) => item.categoria}
       />
