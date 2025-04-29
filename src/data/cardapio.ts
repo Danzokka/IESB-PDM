@@ -1,4 +1,4 @@
-type CardapioItem = {
+export type CardapioItem = {
   nome: string;
   categoria: string;
   imagem: string;

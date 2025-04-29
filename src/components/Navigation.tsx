@@ -4,6 +4,7 @@ import { useColorScheme } from "~/lib/useColorScheme";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import React from "react";
 import { Menu, Moon, ShoppingCart, Sun } from "lucide-react-native";
+import Cart from "./Cart";
 
 const Navigation = () => {
   const { isDarkColorScheme, toggleColorScheme } = useColorScheme();
@@ -14,12 +15,7 @@ const Navigation = () => {
         <Menu size={24} color={isDarkColorScheme ? "white" : "black"} />
       </TouchableOpacity>
       <View className="flex flex-row items-center gap-4">
-        <TouchableOpacity onPress={() => alert("Cart button pressed")}>
-          <ShoppingCart
-            size={24}
-            color={isDarkColorScheme ? "white" : "black"}
-          />
-        </TouchableOpacity>
+        <Cart />
         <TouchableOpacity onPress={toggleColorScheme}>
           {isDarkColorScheme ? (
             <Sun size={24} color={"white"} />
