@@ -1,0 +1,37 @@
+import { StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useColorScheme } from "~/lib/useColorScheme";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import React from "react";
+import { Menu, Moon, ShoppingCart, Sun } from "lucide-react-native";
+
+const Navigation = () => {
+  const { isDarkColorScheme, toggleColorScheme } = useColorScheme();
+
+  return (
+    <View className="flex flex-row justify-between items-center px-4 bg-gray-100 dark:bg-black pt-20 pb-4">
+      <TouchableOpacity onPress={() => alert("Menu button pressed")}>
+        <Menu size={24} color={isDarkColorScheme ? "white" : "black"} />
+      </TouchableOpacity>
+      <View className="flex flex-row items-center gap-4">
+        <TouchableOpacity onPress={() => alert("Cart button pressed")}>
+          <ShoppingCart
+            size={24}
+            color={isDarkColorScheme ? "white" : "black"}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={toggleColorScheme}>
+          {isDarkColorScheme ? (
+            <Sun size={24} color={"white"} />
+          ) : (
+            <Moon size={24} color={"black"} />
+          )}
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default Navigation;
+
+const styles = StyleSheet.create({});
