@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from "react-native";
 import { Button } from "./ui/button";
 import { CardapioItem } from "../data/cardapio";
 import { SquarePlus } from "lucide-react-native";
-import { useCart } from "./CartContext";
+import { useCart } from "../context/Cart";
 
 interface CardapioProps {
   props: CardapioItem;

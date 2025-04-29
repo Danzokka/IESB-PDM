@@ -12,7 +12,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { Text } from "~/components/ui/text";
 import { useColorScheme } from "~/lib/useColorScheme";
-import { useCart } from "./CartContext";
+import { useCart } from "../context/Cart";
 import { View, Image } from "react-native";
 import { CardapioItem } from "../data/cardapio";
 
@@ -21,6 +21,7 @@ const DropdownCardItem = ({ item }: { item: CardapioItem }) => {
 
   const handleRemoveItem = () => {
     removeFromCart(item);
+    alert("Item removido do carrinho!");
   };
 
   return (

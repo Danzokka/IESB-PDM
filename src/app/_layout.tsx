@@ -14,8 +14,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import Navigation from "../components/Navigation";
-import { CartProvider } from "../components/CartContext";
 import { PortalHost } from "@rn-primitives/portal";
+import { CartProvider } from "../context/Cart";
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -56,16 +56,16 @@ export default function RootLayout() {
 
   return (
     <>
-      <GestureHandlerRootView style={{ flex: 1 }} className="bg-background">
-        <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-          <CartProvider>
+      <CartProvider>
+        <GestureHandlerRootView style={{ flex: 1 }} className="bg-background">
+          <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
             <StatusBar style={isDarkColorScheme ? "dark" : "light"} />
             <Navigation />
             <Stack screenOptions={{ headerShown: false }} />
-          </CartProvider>
-        </ThemeProvider>
-      </GestureHandlerRootView>
-      <PortalHost />
+          </ThemeProvider>
+        </GestureHandlerRootView>
+        <PortalHost />
+      </CartProvider>
     </>
   );
 }

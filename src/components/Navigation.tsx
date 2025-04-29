@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme } from "~/lib/useColorScheme";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import React from "react";
-import { Menu, Moon, ShoppingCart, Sun } from "lucide-react-native";
+import { Menu, Moon, Sun } from "lucide-react-native";
 import Cart from "./Cart";
 
 const Navigation = () => {
@@ -15,7 +14,7 @@ const Navigation = () => {
         <Menu size={24} color={isDarkColorScheme ? "white" : "black"} />
       </TouchableOpacity>
       <View className="flex flex-row items-center gap-4">
-        <Cart />
+          <Cart />
         <TouchableOpacity onPress={toggleColorScheme}>
           {isDarkColorScheme ? (
             <Sun size={24} color={"white"} />

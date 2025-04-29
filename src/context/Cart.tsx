@@ -16,7 +16,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [cartItems, setCartItems] = useState<CardapioItem[]>([]);
 
-  // Carregar itens do AsyncStorage ao iniciar
   useEffect(() => {
     const loadCart = async () => {
       const storedCart = await AsyncStorage.getItem("cartItems");
@@ -27,7 +26,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     loadCart();
   }, []);
 
-  // Salvar itens no AsyncStorage sempre que o estado mudar
   useEffect(() => {
     AsyncStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -36,22 +34,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCartItems((prev) => [...prev, item]);
   };
 
-  const removeFromCart = async (item: CardapioItem) => {
+  const removeFromCart = (item: CardapioItem) => {
     const updatedCart = cartItems.filter((i) => i.nome !== item.nome);
     setCartItems(updatedCart);
-
-    // Atualizar o AsyncStorage
-    await AsyncStorage.setItem("cartItems", JSON.stringify(updatedCart));
   };
 
-  const clearCart = async () => {
+  const clearCart = () => {
     setCartItems([]);
-    await AsyncStorage.removeItem("cartItems");
+    AsyncStorage.removeItem("cartItems");
   };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, clearCart, removeFromCart }}
+      value={{ cartItems, addToCart, removeFromCart, clearCart }}
     >
       {children}
     </CartContext.Provider>
