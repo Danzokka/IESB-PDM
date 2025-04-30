@@ -2,20 +2,31 @@ import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import { Button } from "./ui/button";
 import { CardapioItem } from "../data/cardapio";
-import { SquarePlus } from "lucide-react-native";
+import { SquarePlus, Trash2 } from "lucide-react-native";
 import { useCart } from "../context/Cart";
 
 interface CardapioProps {
   props: CardapioItem;
+  func?: "addToCart" | "removeFromCart";
 }
 
-const Cardapio = ({ props }: CardapioProps) => {
-  const { addToCart } = useCart();
+const Cardapio = ({ props, func = "addToCart" }: CardapioProps) => {
+  const { addToCart, removeFromCart } = useCart();
 
   const handleButtonPress = () => {
     // Lógica para adicionar ao carrinho
-    addToCart(props);
-    alert("Item adicionado ao carrinho!");
+    switch (func) {
+      case "addToCart":
+        addToCart(props);
+        alert("Item adicionado ao carrinho!");
+        break;
+      case "removeFromCart":
+        removeFromCart(props);
+        alert("Item removido do carrinho!");
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -28,7 +39,11 @@ const Cardapio = ({ props }: CardapioProps) => {
         variant={"ghost"}
         size={"icon"}
       >
-        <SquarePlus color="red" />
+        {func === "addToCart" ? (
+          <SquarePlus color="red" />
+        ) : (
+          <Trash2 color="red" />
+        )}
       </Button>
 
       {/* Imagem */}

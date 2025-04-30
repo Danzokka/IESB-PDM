@@ -15,6 +15,7 @@ import { useColorScheme } from "~/lib/useColorScheme";
 import { useCart } from "../context/Cart";
 import { View, Image } from "react-native";
 import { CardapioItem } from "../data/cardapio";
+import { Link } from "expo-router";
 
 const DropdownCardItem = ({ item }: { item: CardapioItem }) => {
   const { removeFromCart } = useCart();
@@ -79,6 +80,29 @@ export default function Cart() {
             <DropdownMenuSeparator />
             <DropdownMenuItem disabled>
               <Text className="text-text/75">Carrinho vazio</Text>
+            </DropdownMenuItem>
+          </>
+        )}
+        {cartItems.length > 0 && (
+          <>
+            <DropdownMenuSeparator className="border-gray-800" />
+            <DropdownMenuItem className="flex flex-row items-center justify-between">
+              <Text className="text-text font-semibold">Total</Text>
+              <Text className="text-text font-semibold">
+                R${" "}
+                {cartItems
+                  .reduce((total, item) => total + item.valor, 0)
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </Text>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator className="border-gray-800" />
+            <DropdownMenuItem className="flex flex-row items-center justify-center">
+              <Link asChild href="/checkout">
+                <Button variant="secondary" className="w-full">
+                  <Text className="text-text">Finalizar compra</Text>
+                </Button>
+              </Link>
             </DropdownMenuItem>
           </>
         )}
